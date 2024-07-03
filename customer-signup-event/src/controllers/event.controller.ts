@@ -13,7 +13,7 @@ import { logger } from '../utils/logger.utils';
  */
 export const post = async (request: Request, response: Response) => {
   let customerId = undefined;
-  console.log(request.body);
+  console.log("REQUEST: " + request.body);
 
   // Check request body
   if (!request.body) {
@@ -35,11 +35,12 @@ export const post = async (request: Request, response: Response) => {
   const decodedData = pubSubMessage.data
     ? Buffer.from(pubSubMessage.data, 'base64').toString().trim()
     : undefined;
-
+  console.log("DECODED DATA: " + decodedData);
   if (decodedData) {
     const jsonData = JSON.parse(decodedData);
-
+    console.log("JSON DATA: " + jsonData);
     customerId = jsonData.customer.id;
+    
   }
 
   if (!customerId) {
