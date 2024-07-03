@@ -13,6 +13,7 @@ import { logger } from '../utils/logger.utils';
  */
 export const post = async (request: Request, response: Response) => {
   let customerId = undefined;
+  console.log(request.body);
 
   // Check request body
   if (!request.body) {
